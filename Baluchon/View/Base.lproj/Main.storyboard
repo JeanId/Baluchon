@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PYp-zb-pbF">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ExchangeViewController-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="ExchangeViewController" customClass="ExchangeViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lDA-Zu-ShR">
+                                <rect key="frame" x="81.666666666666686" y="714.66666666666663" width="230" height="34.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHx-j3-d04">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="34.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="rZZ-eL-21g"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Exchange"/>
+                                        <connections>
+                                            <action selector="exchangeRefreshButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="u7I-Wt-i93"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaK-a5-Yfs">
+                                        <rect key="frame" x="130" y="0.0" width="100" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Dicton"/>
+                                        <connections>
+                                            <action selector="dictonRefreshButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="iHw-qA-5Mc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="VaK-a5-Yfs" firstAttribute="height" secondItem="oHx-j3-d04" secondAttribute="height" id="JEP-su-pOK"/>
+                                    <constraint firstItem="VaK-a5-Yfs" firstAttribute="width" secondItem="oHx-j3-d04" secondAttribute="width" id="S8e-z7-fx9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lDA-Zu-ShR" secondAttribute="bottom" constant="20" id="030-gp-LEY"/>
+                            <constraint firstItem="lDA-Zu-ShR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wtv-eA-gGj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Exchange rate" image="eurosign.circle" catalog="system" id="1g4-ia-MEg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978" y="-710"/>
+        </scene>
+        <!--TranslationViewController-->
+        <scene sceneID="zQt-FE-RSk">
+            <objects>
+                <viewController id="pVe-d4-jcb" userLabel="TranslationViewController" customClass="TranslateViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PZL-Dd-lCX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1rV-Vk-sXI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Translation" image="person.line.dotted.person" catalog="system" id="idI-gg-7C2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ac-rZ-GB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978" y="-2"/>
+        </scene>
+        <!--WeatherViewController-->
+        <scene sceneID="uYK-Yr-OWK">
+            <objects>
+                <viewController id="m3L-8K-vRR" userLabel="WeatherViewController" customClass="WeatherViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8jh-cy-9Qt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lpf-sL-YKl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Weather forecast" image="cloud.sun" catalog="system" id="viY-FJ-7rk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gtg-aP-Yhk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978" y="727"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="imE-nb-h2b">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="PYp-zb-pbF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VDR-DY-MiD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="pvY-fR-oKX"/>
+                        <segue destination="pVe-d4-jcb" kind="relationship" relationship="viewControllers" id="Agm-Vi-ZJP"/>
+                        <segue destination="m3L-8K-vRR" kind="relationship" relationship="viewControllers" id="BW5-jY-f0I"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NFD-6U-Vyx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75.572519083969468" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud.sun" catalog="system" width="128" height="97"/>
+        <image name="eurosign.circle" catalog="system" width="128" height="123"/>
+        <image name="person.line.dotted.person" catalog="system" width="128" height="58"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
