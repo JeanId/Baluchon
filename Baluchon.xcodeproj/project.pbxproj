@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7A27A1429F58051004444DE /* ExchangeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A27A1329F58051004444DE /* ExchangeTable.swift */; };
+		E7A27A1629F58082004444DE /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A27A1529F58082004444DE /* Rates.swift */; };
 		E7B2AE2D29E1C96400E0B57E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B2AE2C29E1C96400E0B57E /* AppDelegate.swift */; };
 		E7B2AE2F29E1C96400E0B57E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B2AE2E29E1C96400E0B57E /* SceneDelegate.swift */; };
 		E7B2AE3129E1C96400E0B57E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B2AE3029E1C96400E0B57E /* WeatherViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7A27A1329F58051004444DE /* ExchangeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTable.swift; sourceTree = "<group>"; };
+		E7A27A1529F58082004444DE /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
 		E7B2AE2929E1C96400E0B57E /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B2AE2C29E1C96400E0B57E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B2AE2E29E1C96400E0B57E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			children = (
 				E7B2AE5229E42BA800E0B57E /* ExchangeService.swift */,
 				E7B2AE5429E4420F00E0B57E /* QuoteService.swift */,
+				E7A27A1329F58051004444DE /* ExchangeTable.swift */,
+				E7A27A1529F58082004444DE /* Rates.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,10 +189,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B2AE5529E4420F00E0B57E /* QuoteService.swift in Sources */,
+				E7A27A1429F58051004444DE /* ExchangeTable.swift in Sources */,
 				E7B2AE3129E1C96400E0B57E /* WeatherViewController.swift in Sources */,
 				E7B2AE5129E1D69A00E0B57E /* ExchangeViewController.swift in Sources */,
 				E7B2AE5329E42BA800E0B57E /* ExchangeService.swift in Sources */,
 				E7B2AE4929E1D0BA00E0B57E /* TranslationViewController.swift in Sources */,
+				E7A27A1629F58082004444DE /* Rates.swift in Sources */,
 				E7B2AE2D29E1C96400E0B57E /* AppDelegate.swift in Sources */,
 				E7B2AE2F29E1C96400E0B57E /* SceneDelegate.swift in Sources */,
 			);

@@ -9,14 +9,8 @@ import Foundation
 
 class ExchangeService {
     private static let exchangeUrl = URL(string: "https://api.apilayer.com/fixer/latest")!
-    private static let exchangeToken = "OU0mEkSD0rq7cDC4ZnYLOsnCp3Y7DirG"
-    struct ExchangeTable: Codable {
-        let success : Bool
-        let timeStamp : Int64
-        let base : String?
-        let date : String?
-        //let rates: String?
-    }
+    private static let exchangeToken = "RbNNL4KRGmwJlD8sGuGgIDORlsJq4HuU"
+    
     
     static func getExchange() {
         var request = URLRequest(url: exchangeUrl)
@@ -40,14 +34,17 @@ class ExchangeService {
                 
                 //print(response)
                 print(data)
-                
-                guard let exchangeTable = try? JSONDecoder().decode(ExchangeTable.self, from: data) else {
-                   // gérer l’erreur de décodage
-                    print("Erreur décodage data")
-                   return
+                do {
+                    let exchangeTable = try JSONDecoder().decode(ExchangeTable.self, from: data)
+                    print(exchangeTable.date)
+                    print(exchangeTable.base)
+                    print(exchangeTable.rates.USD)
+                    print(exchangeTable.rates.EUR)
+                } catch let error {
+                    print(error)
                 }
                 
-                print(exchangeTable.date!)
+                
                 
                /* guard let rate = try? JSONDecoder().decode([String: Float].self, from: ) else {
                    // gérer l’erreur ici
