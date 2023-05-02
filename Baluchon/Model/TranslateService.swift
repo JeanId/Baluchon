@@ -9,10 +9,10 @@ import Foundation
 
 class TranslateService {
     static var shared = TranslateService()
+    private init() {}
+    
     private let translateUrl = URL(string: translateUrlString)!
     
-    
-    private init() {}
     
     func getTranslate(_ stringToTranslate: String, callback: @escaping (Bool, String?) ->Void) {
         var request = URLRequest(url: translateUrl)
