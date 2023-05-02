@@ -8,15 +8,22 @@
 import Foundation
 
 struct Rates: Codable {
-    let EUR : Float
-    let USD : Float
-    let MXN : Float
-    let CAD : Float
     let ARS : Float
-    let PEN : Float
+    let BOB : Float
+    let BRL : Float
+    let BTC : Float
+    let CAD : Float
     let CHF : Float
-    let CRC : Float
+    let CLP : Float
     let COP : Float
+    let CRC : Float
+    let CUC : Float
+    let CUP : Float
+    let DOP : Float
     let GBP : Float
+    let GTQ : Float
+    let MXN : Float
+    let PEN : Float
     let RUB : Float
+    let USD : Float
 }

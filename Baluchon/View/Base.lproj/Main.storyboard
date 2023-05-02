@@ -17,6 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hmw-5G-uV2">
+                                <rect key="frame" x="18" y="162.66666666666666" width="357" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Montant à convertir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-3c-X6m">
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SxH-bY-HqJ">
+                                        <rect key="frame" x="211" y="0.0" width="146" height="32"/>
+                                        <segments>
+                                            <segment title="Euro"/>
+                                            <segment title="-"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lDA-Zu-ShR">
                                 <rect key="frame" x="81.666666666666686" y="714.66666666666663" width="230" height="34.333333333333371"/>
                                 <subviews>
@@ -45,19 +63,80 @@
                                     <constraint firstItem="VaK-a5-Yfs" firstAttribute="width" secondItem="oHx-j3-d04" secondAttribute="width" id="S8e-z7-fx9"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Libellé devise sélectionnée" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IO-Np-9aB">
+                                <rect key="frame" x="18" y="267.66666666666669" width="357" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez le montant à convertir " textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ph0-Ze-bXT">
+                                <rect key="frame" x="18" y="201.66666666666666" width="357" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Lw0-fS-B5d"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convertiseur de devise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiU-ev-cvK">
+                                <rect key="frame" x="40" y="89" width="313.33333333333331" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Résultat conversion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ka-FT-6xk">
+                                <rect key="frame" x="22" y="302" width="353" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Rdw-aq-FhF">
+                                <rect key="frame" x="186.66666666666666" y="508.33333333333326" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lDA-Zu-ShR" secondAttribute="bottom" constant="20" id="030-gp-LEY"/>
+                            <constraint firstItem="ph0-Ze-bXT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="0se-8d-582"/>
+                            <constraint firstItem="aiU-ev-cvK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="3rR-N2-kNd"/>
+                            <constraint firstItem="4ka-FT-6xk" firstAttribute="top" secondItem="3IO-Np-9aB" secondAttribute="bottom" constant="8" symbolic="YES" id="3uT-5P-ezA"/>
+                            <constraint firstItem="Hmw-5G-uV2" firstAttribute="top" secondItem="aiU-ev-cvK" secondAttribute="bottom" constant="40" id="7w3-pZ-ppx"/>
+                            <constraint firstItem="Rdw-aq-FhF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ger-zH-zp8"/>
+                            <constraint firstItem="Hmw-5G-uV2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="IE8-zN-cSs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3IO-Np-9aB" secondAttribute="trailing" constant="18" id="KYy-MR-p8r"/>
+                            <constraint firstItem="3IO-Np-9aB" firstAttribute="leading" secondItem="Hmw-5G-uV2" secondAttribute="leading" id="Ks3-2Y-QMO"/>
+                            <constraint firstItem="3IO-Np-9aB" firstAttribute="top" secondItem="ph0-Ze-bXT" secondAttribute="bottom" constant="30" id="MbU-ab-cWp"/>
+                            <constraint firstItem="aiU-ev-cvK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X55-pr-Uw4"/>
+                            <constraint firstItem="Rdw-aq-FhF" firstAttribute="top" secondItem="4ka-FT-6xk" secondAttribute="bottom" constant="180" id="a63-79-hpb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ph0-Ze-bXT" secondAttribute="trailing" constant="18" id="gGf-cV-D5O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hmw-5G-uV2" secondAttribute="trailing" constant="18" id="gNm-zj-9JZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ka-FT-6xk" secondAttribute="trailing" constant="18" id="h09-rh-GRT"/>
+                            <constraint firstItem="4ka-FT-6xk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="lNp-7E-HUo"/>
+                            <constraint firstItem="ph0-Ze-bXT" firstAttribute="top" secondItem="Hmw-5G-uV2" secondAttribute="bottom" constant="8" id="nkC-jm-2Mb"/>
                             <constraint firstItem="lDA-Zu-ShR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wtv-eA-gGj"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="l5f-bV-nM4" appends="YES" id="cj1-p4-o8Q"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exchange rate" image="eurosign.circle" catalog="system" id="1g4-ia-MEg"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Rdw-aq-FhF" id="kLq-dw-R5S"/>
+                        <outlet property="amountTextField" destination="ph0-Ze-bXT" id="t53-03-Vdr"/>
+                        <outlet property="currencyLabel" destination="3IO-Np-9aB" id="g6Q-IA-yUa"/>
+                        <outlet property="currencySelector" destination="SxH-bY-HqJ" id="DJh-ux-AHe"/>
+                        <outlet property="resultLabel" destination="4ka-FT-6xk" id="KJc-s7-lcV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="l5f-bV-nM4">
+                    <connections>
+                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="jaf-lG-SyP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="978" y="-710"/>
+            <point key="canvasLocation" x="977.86259541984725" y="-710.56338028169023"/>
         </scene>
         <!--TranslationViewController-->
         <scene sceneID="zQt-FE-RSk">
@@ -66,12 +145,91 @@
                     <view key="view" contentMode="scaleToFill" id="PZL-Dd-lCX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w1-th-dVh">
+                                <rect key="frame" x="20" y="262" width="355" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez le texte à traduire ( max 40 car.)" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-a8-Ckg">
+                                <rect key="frame" x="18" y="198" width="357" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pVe-d4-jcb" id="dMN-xD-5Nf"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phrase à traduire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-FO-B7F">
+                                <rect key="frame" x="20" y="163" width="355" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traducteur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tg-O0-1uP">
+                                <rect key="frame" x="120.66666666666669" y="89" width="152" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBY-Jf-0gn">
+                                <rect key="frame" x="108.66666666666669" y="714" width="176" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Lancer la traduction"/>
+                                <connections>
+                                    <action selector="tapTranslate" destination="pVe-d4-jcb" eventType="touchUpInside" id="XqR-7I-7Ms"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E42-iy-Ko7">
+                                <rect key="frame" x="20" y="296.33333333333331" width="355" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-Uh-bKl">
+                                <rect key="frame" x="186.66666666666666" y="498" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1rV-Vk-sXI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="2w1-th-dVh" secondAttribute="trailing" constant="18" id="1eQ-fZ-n3S"/>
+                            <constraint firstItem="2w1-th-dVh" firstAttribute="top" secondItem="nuk-a8-Ckg" secondAttribute="bottom" constant="30" id="1mj-Q1-LHA"/>
+                            <constraint firstItem="2w1-th-dVh" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="20" id="289-3f-Ued"/>
+                            <constraint firstItem="a9C-Uh-bKl" firstAttribute="top" secondItem="E42-iy-Ko7" secondAttribute="bottom" constant="180" id="8ov-ZP-Jrc"/>
+                            <constraint firstItem="nuk-a8-Ckg" firstAttribute="top" secondItem="BmT-FO-B7F" secondAttribute="bottom" constant="8" id="8qf-Vn-WqB"/>
+                            <constraint firstItem="a9C-Uh-bKl" firstAttribute="centerX" secondItem="PZL-Dd-lCX" secondAttribute="centerX" id="9Yv-TL-DEL"/>
+                            <constraint firstItem="8Tg-O0-1uP" firstAttribute="centerX" secondItem="PZL-Dd-lCX" secondAttribute="centerX" id="Cmu-gf-QHN"/>
+                            <constraint firstItem="E42-iy-Ko7" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="20" id="Dr8-dx-h4D"/>
+                            <constraint firstItem="E42-iy-Ko7" firstAttribute="top" secondItem="2w1-th-dVh" secondAttribute="bottom" constant="8" id="UWo-Ga-zSx"/>
+                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="bottom" secondItem="hBY-Jf-0gn" secondAttribute="bottom" constant="20" id="e3c-OS-Pcb"/>
+                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="BmT-FO-B7F" secondAttribute="trailing" constant="18" id="esS-iJ-WKj"/>
+                            <constraint firstItem="BmT-FO-B7F" firstAttribute="top" secondItem="8Tg-O0-1uP" secondAttribute="bottom" constant="40" id="hFF-Ge-P2g"/>
+                            <constraint firstItem="BmT-FO-B7F" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="20" id="kzN-e3-Oy7"/>
+                            <constraint firstItem="hBY-Jf-0gn" firstAttribute="centerX" secondItem="PZL-Dd-lCX" secondAttribute="centerX" id="lZX-f7-nbf"/>
+                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="E42-iy-Ko7" secondAttribute="trailing" constant="18" id="mar-GK-GfT"/>
+                            <constraint firstItem="nuk-a8-Ckg" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="18" id="oQy-df-v7I"/>
+                            <constraint firstItem="8Tg-O0-1uP" firstAttribute="top" secondItem="1rV-Vk-sXI" secondAttribute="top" constant="30" id="pQM-b4-NCl"/>
+                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="nuk-a8-Ckg" secondAttribute="trailing" constant="18" id="zhZ-GI-cam"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6oq-BT-BEW" appends="YES" id="MvS-Fq-3bY"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" image="person.and.arrow.left.and.arrow.right" catalog="system" id="idI-gg-7C2"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="a9C-Uh-bKl" id="ljo-43-5eR"/>
+                        <outlet property="textToTranslate" destination="nuk-a8-Ckg" id="8SG-Xn-koL"/>
+                        <outlet property="translatedText" destination="E42-iy-Ko7" id="WAP-NJ-zE1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ac-rZ-GB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6oq-BT-BEW">
+                    <connections>
+                        <action selector="tapGesture:" destination="pVe-d4-jcb" id="jK0-dr-PWz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="978" y="-2"/>
         </scene>
@@ -91,6 +249,51 @@
             </objects>
             <point key="canvasLocation" x="978" y="727"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="SxT-e9-e0z">
+            <objects>
+                <viewController id="oZV-CL-Zee" customClass="SettingsViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xu3-YZ-Wfy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gSx-ml-xNS">
+                                <rect key="frame" x="20" y="69" width="353" height="256.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devise choisie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-Mr-0cH">
+                                        <rect key="frame" x="122" y="0.0" width="109.33333333333331" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZE-Pf-HEv">
+                                        <rect key="frame" x="16.666666666666657" y="40.333333333333314" width="320" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="oZV-CL-Zee" id="9w5-Dk-t5p"/>
+                                            <outlet property="delegate" destination="oZV-CL-Zee" id="64Z-eh-H6F"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iCO-LG-0vf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gSx-ml-xNS" firstAttribute="centerX" secondItem="Xu3-YZ-Wfy" secondAttribute="centerX" id="4FO-Mc-aOC"/>
+                            <constraint firstItem="gSx-ml-xNS" firstAttribute="leading" secondItem="iCO-LG-0vf" secondAttribute="leading" constant="20" id="oBl-Bg-CQp"/>
+                            <constraint firstItem="gSx-ml-xNS" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="10" id="ytY-Fd-7yE"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="q6p-Oa-vdC"/>
+                    <connections>
+                        <outlet property="choicedCurrencyLabel" destination="NlW-Mr-0cH" id="ugh-7w-Vha"/>
+                        <outlet property="currencyPickerView" destination="oZE-Pf-HEv" id="wkB-Ka-Zgq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9R-Yy-vZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981" y="1416"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="imE-nb-h2b">
             <objects>
@@ -105,16 +308,18 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="pvY-fR-oKX"/>
                         <segue destination="pVe-d4-jcb" kind="relationship" relationship="viewControllers" id="Agm-Vi-ZJP"/>
                         <segue destination="m3L-8K-vRR" kind="relationship" relationship="viewControllers" id="BW5-jY-f0I"/>
+                        <segue destination="oZV-CL-Zee" kind="relationship" relationship="viewControllers" id="fk4-r4-cBZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFD-6U-Vyx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.572519083969468" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="-1164" y="925"/>
         </scene>
     </scenes>
     <resources>
         <image name="cloud.sun" catalog="system" width="128" height="97"/>
         <image name="eurosign.circle" catalog="system" width="128" height="123"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="person.and.arrow.left.and.arrow.right" catalog="system" width="128" height="89"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -7,23 +7,57 @@
 
 import UIKit
 
-class TranslateViewController: UIViewController {
 
+class TranslateViewController: UIViewController {
+    @IBOutlet weak var textToTranslate: UITextField!
+    @IBOutlet weak var translatedText: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+        textToTranslate.resignFirstResponder()
     }
-    */
+    
+    @IBAction func tapTranslate() {
+        textToTranslate.isEnabled.toggle()
+       // translate()
+    }
+    
+    
+    private func translate(_ stringToTranslate: String) {
+        textToTranslate.isEnabled = false
+        activityIndicator.isHidden = false
+        TranslateService.shared.getTranslate(stringToTranslate, callback: { success, translationText in
+            DispatchQueue.main.async {
+                guard let translationText = translationText, success == true else {
+                    // message erreur
+                    return
+                }
+                self.translatedText.text = translationText
+            }
+        })
+        textToTranslate.isEnabled = true
+        activityIndicator.isHidden = true
+    }
+    
+}
 
+extension TranslateViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let input = textToTranslate.text else {
+            // defaut string
+            return false
+        }
+        translate(input)
+        textToTranslate.resignFirstResponder()
+        return true
+    }
+    
 }
