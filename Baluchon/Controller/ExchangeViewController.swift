@@ -9,13 +9,11 @@ import UIKit
 
 class ExchangeViewController: UIViewController {
 
-    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencySelector: UISegmentedControl!
-    
     
     
     var amount: Float = 1.0
@@ -26,6 +24,8 @@ class ExchangeViewController: UIViewController {
 
         activityIndicator.isHidden = true
         currencySelector.isEnabled = false
+        amountTextField.text = "1"
+        processExchange(for: 1)
     }
     
     
@@ -41,21 +41,6 @@ class ExchangeViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-    }
-    
-    
-    
-    @IBAction func exchangeRefreshButton() {
-        
-        let currencies = (UserDefaults.standard.object(forKey: userKey02) as? [Float])!
-        for i in currencies {
-            print(i)
-        }
-        
-    }
-    
-    @IBAction func dictonRefreshButton() {
-        QuoteService.getQuote()
     }
     
     

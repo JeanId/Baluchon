@@ -31,8 +31,7 @@ class TranslateViewController: UIViewController {
     
     
     private func translate(_ stringToTranslate: String) {
-        textToTranslate.isEnabled = false
-        activityIndicator.isHidden = false
+        showActicityIndicator(hidden: false)
         TranslateService.shared.getTranslate(stringToTranslate, callback: { success, translationText in
             DispatchQueue.main.async {
                 guard let translationText = translationText, success == true else {
@@ -42,8 +41,12 @@ class TranslateViewController: UIViewController {
                 self.translatedText.text = translationText
             }
         })
-        textToTranslate.isEnabled = true
-        activityIndicator.isHidden = true
+        showActicityIndicator(hidden: true)
+    }
+    
+    private func showActicityIndicator(hidden: Bool) {
+        textToTranslate.isEnabled = hidden
+        activityIndicator.isHidden = hidden
     }
     
 }
