@@ -37,6 +37,7 @@ class WeatherViewController: UIViewController {
     @IBAction func getMeteo() {
         print("tapOk")
         showActicityIndicator(hidden: false)
+        
         WeatherService.shared.getCityWeather(cityAt: 3) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
@@ -59,8 +60,36 @@ class WeatherViewController: UIViewController {
                 self.weatherIcon.image = UIImage(named: forecastsList[forecastRow].icon)
             }
         }
+        
+        WeatherService.shared.getCityWeather(cityAt: 0) { success, forecastdata in
+            DispatchQueue.main.async {
+                guard let forecastdata = forecastdata, success == true else {
+                    print("défaut")
+                    return
+                }
+                self.city2Label.text = forecastdata.name
+                self.windDirection2Label.text = self.windDirection(for: Float(forecastdata.wind.deg))
+                let wSpeed = String(format: "%.0F", (forecastdata.wind.speed * 3.6))
+                self.windSpeed2Label.text = "\(wSpeed) km/h"
+                let tMin = String(format: "%.1F", forecastdata.main.temp_min)
+                let tMax = String(format: "%.1F", forecastdata.main.temp_max)
+                self.tMin2Label.text = "\(tMin)°C"
+                self.tMax2Label.text = "\(tMax)°C"
+                guard let forecastRow = self.getForecastRow(for: forecastdata.weather[0].id) else {
+                    // défaut code id météo
+                    return
+                }
+                self.weather2Label.text = forecastsList[forecastRow].description
+                self.weather2Icon.image = UIImage(named: forecastsList[forecastRow].icon)
+            }
+        }
+        
         showActicityIndicator(hidden: true)
     }
+    
+  
+    
+    
     
     private func showActicityIndicator(hidden: Bool) {
         tapButton.isHidden = !hidden
