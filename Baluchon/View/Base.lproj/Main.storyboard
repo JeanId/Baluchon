@@ -551,43 +551,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gSx-ml-xNS">
-                                <rect key="frame" x="20" y="69" width="353" height="200"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devise choisie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-Mr-0cH">
-                                        <rect key="frame" x="89.333333333333329" y="0.0" width="174.33333333333337" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZE-Pf-HEv">
-                                        <rect key="frame" x="51.666666666666686" y="50" width="250" height="150"/>
-                                        <color key="backgroundColor" red="0.98091167211532593" green="0.59309055577228376" blue="0.46701556783241849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="YE0-xe-nxi"/>
-                                            <constraint firstAttribute="height" constant="150" id="mPd-fK-wP7"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="oZV-CL-Zee" id="9w5-Dk-t5p"/>
-                                            <outlet property="delegate" destination="oZV-CL-Zee" id="64Z-eh-H6F"/>
-                                        </connections>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.9864686131" green="0.71209102396309487" blue="0.58544206576870128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-lv-GQD">
+                                <rect key="frame" x="30" y="119" width="333" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="VDk-ys-eZE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iCO-LG-0vf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gSx-ml-xNS" firstAttribute="centerX" secondItem="Xu3-YZ-Wfy" secondAttribute="centerX" id="4FO-Mc-aOC"/>
-                            <constraint firstItem="gSx-ml-xNS" firstAttribute="leading" secondItem="iCO-LG-0vf" secondAttribute="leading" constant="20" id="oBl-Bg-CQp"/>
-                            <constraint firstItem="gSx-ml-xNS" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="10" id="ytY-Fd-7yE"/>
+                            <constraint firstItem="W7d-lv-GQD" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="60" id="5DJ-fv-oRy"/>
+                            <constraint firstItem="W7d-lv-GQD" firstAttribute="leading" secondItem="iCO-LG-0vf" secondAttribute="leading" constant="30" id="fau-Aq-peu"/>
+                            <constraint firstItem="iCO-LG-0vf" firstAttribute="trailing" secondItem="W7d-lv-GQD" secondAttribute="trailing" constant="30" id="qNP-AH-3aR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="q6p-Oa-vdC"/>
                     <connections>
-                        <outlet property="choicedCurrencyLabel" destination="NlW-Mr-0cH" id="ugh-7w-Vha"/>
-                        <outlet property="currencyPickerView" destination="oZE-Pf-HEv" id="wkB-Ka-Zgq"/>
+                        <outlet property="currencyTextField" destination="W7d-lv-GQD" id="W28-Nv-dnv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9R-Yy-vZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

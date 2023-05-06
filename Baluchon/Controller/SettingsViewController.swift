@@ -10,21 +10,26 @@ import UIKit
 
 class SettingsViewController: UIViewController  {
     
+    @IBOutlet weak var currencyTextField: UITextField!
     
     
-    @IBOutlet weak var currencyPickerView: UIPickerView!
-    @IBOutlet weak var choicedCurrencyLabel: UILabel!
+     var currencyPickerView = UIPickerView()
+    
     var currencyRow = 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currencyTextField.inputView = currencyPickerView
+        currencyTextField.placeholder = "Selectionnez une device"
         
+        currencyPickerView.delegate = self
+        currencyPickerView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currencyRow = SettingService.shared.getCurrencyRow()
-        choicedCurrencyLabel.text = "Devise choisie : \(currenciesList[currencyRow].currencyCode)"
+        currencyTextField.text = "Devise choisie : \(currenciesList[currencyRow].currencyCode)"
         currencyPickerView.selectRow(currencyRow, inComponent: 0, animated: true)
     }
 
@@ -70,7 +75,8 @@ class SettingsViewController: UIViewController  {
  
      func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
          currencyRow = row
-         choicedCurrencyLabel.text = "Devise choisie : \(currenciesList[row].currencyCode)"
+         currencyTextField.text = "Devise choisie : \(currenciesList[row].currencyCode)"
+         currencyTextField.resignFirstResponder()
      }
  
  }
