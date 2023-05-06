@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
+class SettingsViewController: UIViewController  {
     
     
     
@@ -45,46 +45,35 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
       
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currenciesList.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currenciesList[row].currencyLabel
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencyRow = row
-        choicedCurrencyLabel.text = "Devise choisie : \(currenciesList[row].currencyCode)"
-    }
+   
 
     
     
 }
 
-/*
+
  
- extension SettingService:  UIPickerViewDataSource {
+ extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
  
  
- func numberOfComponents(in pickerView: UIPickerView) -> Int {
- return 2
+     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+         return 1
+     }
+ 
+     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+         return currenciesList.count
+     }
+ 
+     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+         return currenciesList[row].currencyLabel
+     }
+ 
+     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+         currencyRow = row
+         choicedCurrencyLabel.text = "Devise choisie : \(currenciesList[row].currencyCode)"
+     }
+ 
  }
  
- func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
- return currenciesList.count
- }
  
- }
- 
-    extension SettingService: UIPickerViewDelegate {
- 
- 
- 
- }
- */
 

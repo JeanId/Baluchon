@@ -14,13 +14,9 @@ struct ForecastData: Codable {
     let main: Main
     let visibility: Int16
     let wind: Wind
-    let clouds: Clouds
     let dt: Double
-    let sys: Sys
     let timezone: Int32
-    let id: Int32
     let name: String
-    let cod:Int16
 }
 
 struct Coord: Codable {
@@ -50,14 +46,3 @@ struct Wind: Codable {
     let deg: Int16
 }
 
-struct Clouds: Codable {
-    let all: Int16
-}
-
-struct Sys: Codable {
-    let type: UInt8
-    let id: UInt
-    let country: String
-    let sunrise: Double
-    let sunset: Double
-}

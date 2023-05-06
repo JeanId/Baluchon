@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var windDirection1Label: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weather1Label: UILabel!
+    @IBOutlet weak var temp1Label: UILabel!
+    @IBOutlet weak var dateTime1Label: UILabel!
     
     @IBOutlet weak var city2Label: UILabel!
     @IBOutlet weak var tMax2Label: UILabel!
@@ -23,6 +25,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var windDirection2Label: UILabel!
     @IBOutlet weak var weather2Icon: UIImageView!
     @IBOutlet weak var weather2Label: UILabel!
+    @IBOutlet weak var temp2Label: UILabel!
+    @IBOutlet weak var dateTime2Label: UILabel!
     
     @IBOutlet weak var tapButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -38,7 +42,7 @@ class WeatherViewController: UIViewController {
         print("tapOk")
         showActicityIndicator(hidden: false)
         
-        WeatherService.shared.getCityWeather(cityAt: 3) { success, forecastdata in
+        WeatherService.shared.getCityWeather(cityAt: 4) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
                     print("défaut")
@@ -50,8 +54,14 @@ class WeatherViewController: UIViewController {
                 self.windSpeed1Label.text = "\(wSpeed) km/h"
                 let tMin = String(format: "%.1F", forecastdata.main.temp_min)
                 let tMax = String(format: "%.1F", forecastdata.main.temp_max)
+                let temp = String(format: "%.1F", forecastdata.main.temp)
                 self.tMin1Label.text = "\(tMin)°C"
                 self.tMax1Label.text = "\(tMax)°C"
+                self.temp1Label.text = "\(temp)°C"
+                let dateTime = Date(timeIntervalSince1970: forecastdata.dt)
+                let dateF = DateFormatter()
+                dateF.dateFormat = "d MMM HH:mm"
+                self.dateTime1Label.text = dateF.string(from: dateTime)
                 guard let forecastRow = self.getForecastRow(for: forecastdata.weather[0].id) else {
                     // défaut code id météo
                     return
@@ -73,8 +83,14 @@ class WeatherViewController: UIViewController {
                 self.windSpeed2Label.text = "\(wSpeed) km/h"
                 let tMin = String(format: "%.1F", forecastdata.main.temp_min)
                 let tMax = String(format: "%.1F", forecastdata.main.temp_max)
+                let temp = String(format: "%.1F", forecastdata.main.temp)
                 self.tMin2Label.text = "\(tMin)°C"
                 self.tMax2Label.text = "\(tMax)°C"
+                self.temp2Label.text = "\(temp)°C"
+                let dateTime = Date(timeIntervalSince1970: forecastdata.dt)
+                let dateF = DateFormatter()
+                dateF.dateFormat = "d MMM HH:mm"
+                self.dateTime2Label.text = dateF.string(from: dateTime)
                 guard let forecastRow = self.getForecastRow(for: forecastdata.weather[0].id) else {
                     // défaut code id météo
                     return
