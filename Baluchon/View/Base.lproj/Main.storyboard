@@ -144,14 +144,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBY-Jf-0gn">
-                                <rect key="frame" x="108.66666666666669" y="714" width="176" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Lancer la traduction"/>
-                                <connections>
-                                    <action selector="tapTranslate" destination="pVe-d4-jcb" eventType="touchUpInside" id="XqR-7I-7Ms"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E42-iy-Ko7">
                                 <rect key="frame" x="20" y="296.33333333333331" width="355" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -175,11 +167,9 @@
                             <constraint firstItem="8Tg-O0-1uP" firstAttribute="centerX" secondItem="PZL-Dd-lCX" secondAttribute="centerX" id="Cmu-gf-QHN"/>
                             <constraint firstItem="E42-iy-Ko7" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="20" id="Dr8-dx-h4D"/>
                             <constraint firstItem="E42-iy-Ko7" firstAttribute="top" secondItem="2w1-th-dVh" secondAttribute="bottom" constant="8" id="UWo-Ga-zSx"/>
-                            <constraint firstItem="1rV-Vk-sXI" firstAttribute="bottom" secondItem="hBY-Jf-0gn" secondAttribute="bottom" constant="20" id="e3c-OS-Pcb"/>
                             <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="BmT-FO-B7F" secondAttribute="trailing" constant="18" id="esS-iJ-WKj"/>
                             <constraint firstItem="BmT-FO-B7F" firstAttribute="top" secondItem="8Tg-O0-1uP" secondAttribute="bottom" constant="40" id="hFF-Ge-P2g"/>
                             <constraint firstItem="BmT-FO-B7F" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="20" id="kzN-e3-Oy7"/>
-                            <constraint firstItem="hBY-Jf-0gn" firstAttribute="centerX" secondItem="PZL-Dd-lCX" secondAttribute="centerX" id="lZX-f7-nbf"/>
                             <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="E42-iy-Ko7" secondAttribute="trailing" constant="18" id="mar-GK-GfT"/>
                             <constraint firstItem="nuk-a8-Ckg" firstAttribute="leading" secondItem="1rV-Vk-sXI" secondAttribute="leading" constant="18" id="oQy-df-v7I"/>
                             <constraint firstItem="8Tg-O0-1uP" firstAttribute="top" secondItem="1rV-Vk-sXI" secondAttribute="top" constant="30" id="pQM-b4-NCl"/>
@@ -559,7 +549,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="VDk-ys-eZE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bn7-hI-Ufb">
@@ -567,7 +557,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="soo-xP-2mD"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poc-SL-ye7">
@@ -575,14 +565,14 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BeZ-c2-jjM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iCO-LG-0vf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90561868686868685" green="0.89982605709574537" blue="0.60510381818959602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OVj-Vt-eNz" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="120" id="4e7-xa-4RR"/>
                             <constraint firstItem="iCO-LG-0vf" firstAttribute="trailing" secondItem="OVj-Vt-eNz" secondAttribute="trailing" constant="50" id="6Uw-32-Mwg"/>

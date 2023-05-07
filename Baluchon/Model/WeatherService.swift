@@ -22,13 +22,6 @@ class WeatherService {
         var request = URLRequest(url: weatherUrl)
         request.httpMethod = "POST"
         
-        
-        
-        /*request.httpMethod = "GET"
-        request.addValue(lat, forHTTPHeaderField: "lat")
-        request.addValue(lon, forHTTPHeaderField: "lon")
-        request.addValue(weatherToken, forHTTPHeaderField: "appid")*/
-        
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
