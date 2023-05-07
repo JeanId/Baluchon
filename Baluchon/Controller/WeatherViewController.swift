@@ -37,12 +37,25 @@ class WeatherViewController: UIViewController {
         showActicityIndicator(hidden: true)
        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getForecasts()
+    }
 
     @IBAction func getMeteo() {
-        print("tapOk")
+        getForecasts()
+        
+    }
+    
+  
+    private func getForecasts() {
+        let city1 = SettingService.shared.getCity1Row()
+        let city2 = SettingService.shared.getCity2Row()
+        
         showActicityIndicator(hidden: false)
         
-        WeatherService.shared.getCityWeather(cityAt: 4) { success, forecastdata in
+        WeatherService.shared.getCityWeather(cityAt: city1) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
                     print("défaut")
@@ -71,7 +84,7 @@ class WeatherViewController: UIViewController {
             }
         }
         
-        WeatherService.shared.getCityWeather(cityAt: 0) { success, forecastdata in
+        WeatherService.shared.getCityWeather(cityAt: city2) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
                     print("défaut")
@@ -102,9 +115,6 @@ class WeatherViewController: UIViewController {
         
         showActicityIndicator(hidden: true)
     }
-    
-  
-    
     
     
     private func showActicityIndicator(hidden: Bool) {

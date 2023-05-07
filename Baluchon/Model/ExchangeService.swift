@@ -19,7 +19,7 @@ class ExchangeService {
             if isToUpdate(since: timestamp) {
                 print("is to update")
             } else {
-                let result = amount * currenciesRates[SettingService.shared.currencyRow]
+                let result = amount * currenciesRates[SettingService.shared.getCurrencyRow()]
                 print("is not to update !!!")
                 callback(true, result)
                 return
@@ -55,7 +55,7 @@ class ExchangeService {
                     let exchangeT = try JSONDecoder().decode(ExchangeTable.self, from: data)
                     print("exchangeTable ok !!!")
                     ExchangeService.saveCurrenciesRates(for: exchangeT)
-                    let result = amount * ExchangeService.currenciesRates[SettingService.shared.currencyRow]
+                    let result = amount * ExchangeService.currenciesRates[SettingService.shared.getCurrencyRow()]
                     callback(true, result)
                     
                 } catch let error {

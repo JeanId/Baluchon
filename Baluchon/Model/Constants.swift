@@ -11,7 +11,8 @@ import Foundation
 let userKey01 = "currencyKey"
 let userKey02 = "exchangeKey"
 let userKey03 = "timeStampKey"
-
+let userKey04 = "city1Key"
+let userKey05 = "city2Key"
 
 let exchangeUrlString = "https://api.apilayer.com/fixer/latest"
 let exchangeToken = "RbNNL4KRGmwJlD8sGuGgIDORlsJq4HuU"

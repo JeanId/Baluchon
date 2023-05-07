@@ -9,18 +9,29 @@ import Foundation
 
 class SettingService {
     static var shared = SettingService()
-    var currencyRow:Int
-    
-    private init() {
-        self.currencyRow = UserDefaults.standard.integer(forKey: userKey01)
-    }
+    private init() { }
     
     func saveCurrency(at row: Int) {
-        self.currencyRow = row
         UserDefaults.standard.set(row, forKey: userKey01)
     }
     
     func getCurrencyRow() -> Int {
         return UserDefaults.standard.integer(forKey: userKey01)
+    }
+    
+    func saveCity1(at row: Int) {
+        UserDefaults.standard.set(row, forKey: userKey04)
+    }
+    
+    func getCity1Row() -> Int {
+        return UserDefaults.standard.integer(forKey: userKey04)
+    }
+    
+    func saveCity2(at row: Int) {
+        UserDefaults.standard.set(row, forKey: userKey05)
+    }
+    
+    func getCity2Row() -> Int {
+        return UserDefaults.standard.integer(forKey: userKey05)
     }
 }

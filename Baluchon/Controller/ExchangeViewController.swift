@@ -31,7 +31,7 @@ class ExchangeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        currencyLabel.text = currenciesList[SettingService.shared.currencyRow].currencyLabel
+        currencyLabel.text = currenciesList[SettingService.shared.getCurrencyRow()].currencyLabel
         guard let input = Float((amountTextField.text!)) else {
             return
         }
@@ -58,7 +58,7 @@ class ExchangeViewController: UIViewController {
                 return
             }
             let formattedResult = String(format: "%.2F", result)
-            self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.currencyRow].currencyCode)"
+            self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.getCurrencyRow()].currencyCode)"
         })
         amountTextField.isEnabled = true
         activityIndicator.isHidden = true
