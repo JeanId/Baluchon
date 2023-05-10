@@ -52,7 +52,7 @@ class ExchangeViewController: UIViewController {
     private func processExchange(for amount: Float) {
         amountTextField.isEnabled = false
         activityIndicator.isHidden = false
-        ExchangeService.getExchange(amount, callback: {success, result in
+        ExchangeService.shared.getExchange(amount, callback: {success, result in
             guard let result = result, success == true  else {
                 // message erreur
                 return
