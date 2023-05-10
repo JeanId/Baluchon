@@ -8,11 +8,20 @@
 import Foundation
 
 class ExchangeService {
+    static var shared = ExchangeService()
+    private init() {}
+    
     private static let exchangeUrl = URL(string: exchangeUrlString)!
-    private static var currenciesRates: [Float] = []
+    
+    private var currenciesRates: [Float] = []
+    private var session = URLSession(configuration: .default)
+    
+    init(session: URLSession) {
+        self.session = session
+    }
     
     
-    static func getExchange(_ amount: Float, callback: @escaping (Bool, Float?) -> Void) {
+    func getExchange(_ amount: Float, callback: @escaping (Bool, Float?) -> Void) {
         if let currencies = (UserDefaults.standard.object(forKey: userKey02) as? [Float]) {
             currenciesRates = currencies
             let timestamp = UserDefaults.standard.double(forKey: userKey03)
@@ -24,13 +33,11 @@ class ExchangeService {
             }
         }
             
-
-        
-        var request = URLRequest(url: exchangeUrl)
+        var request = URLRequest(url: ExchangeService.exchangeUrl)
         request.httpMethod = "GET"
         //request.addValue(exchangeToken, forHTTPHeaderField: "apikey")
         request.allHTTPHeaderFields = ["apikey":exchangeToken]
-        let session = URLSession(configuration: .default)
+        
         let task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
@@ -51,8 +58,8 @@ class ExchangeService {
                 print(data)
                 do {
                     let exchangeT = try JSONDecoder().decode(ExchangeTable.self, from: data)
-                    ExchangeService.saveCurrenciesRates(for: exchangeT)
-                    let result = amount * ExchangeService.currenciesRates[SettingService.shared.getCurrencyRow()]
+                    self.saveCurrenciesRates(for: exchangeT)
+                    let result = amount * self.currenciesRates[SettingService.shared.getCurrencyRow()]
                     callback(true, result)
                     
                 } catch let error {
@@ -67,7 +74,7 @@ class ExchangeService {
     }
     
     
-    private static func saveCurrenciesRates(for exchangeTable: ExchangeTable) {
+    private func saveCurrenciesRates(for exchangeTable: ExchangeTable) {
         currenciesRates = []
         currenciesRates.append(exchangeTable.rates.ARS)
         currenciesRates.append(exchangeTable.rates.BOB)
@@ -91,7 +98,7 @@ class ExchangeService {
         UserDefaults.standard.set(exchangeTable.timestamp, forKey: userKey03)
     }
     
-    private static func isToUpdate(since timeStamp: Double) -> Bool {
+    private func isToUpdate(since timeStamp: Double) -> Bool {
         let lastUrlStamp = Date(timeIntervalSince1970: timeStamp)
         let urlStampLimit = lastUrlStamp.addingTimeInterval(86400)
         let now = Date()
