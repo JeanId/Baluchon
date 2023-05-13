@@ -46,7 +46,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez le montant à convertir " textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ph0-Ze-bXT">
                                 <rect key="frame" x="18" y="201.66666666666666" width="357" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Lw0-fS-B5d"/>
                                 </connections>
@@ -124,7 +124,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez le texte à traduire ( max 40 car.)" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-a8-Ckg">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez le texte à traduire ( max 50 car.)" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-a8-Ckg">
                                 <rect key="frame" x="18" y="198" width="357" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
@@ -155,7 +155,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1rV-Vk-sXI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1rV-Vk-sXI" firstAttribute="trailing" secondItem="2w1-th-dVh" secondAttribute="trailing" constant="18" id="1eQ-fZ-n3S"/>
@@ -204,7 +204,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Météo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyz-bP-mxB">
-                                <rect key="frame" x="150.33333333333334" y="99" width="92.333333333333343" height="36"/>
+                                <rect key="frame" x="150.33333333333334" y="89" width="92.333333333333343" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -232,7 +232,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-qs-Seh">
-                                <rect key="frame" x="49" y="235" width="295.33333333333331" height="144"/>
+                                <rect key="frame" x="49" y="225" width="295.33333333333331" height="144"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jio-c2-PvD">
                                         <rect key="frame" x="0.0" y="0.0" width="295.33333333333331" height="30"/>
@@ -362,7 +362,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-OV-ZC9">
-                                <rect key="frame" x="49" y="459" width="295.33333333333331" height="144"/>
+                                <rect key="frame" x="49" y="449" width="295.33333333333331" height="144"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KD-mI-oRc">
                                         <rect key="frame" x="0.0" y="0.0" width="295.33333333333331" height="30"/>
@@ -500,7 +500,7 @@
                             <constraint firstItem="Syd-OV-ZC9" firstAttribute="centerX" secondItem="8jh-cy-9Qt" secondAttribute="centerX" id="PvQ-2K-zaQ"/>
                             <constraint firstItem="0jd-qs-Seh" firstAttribute="centerX" secondItem="8jh-cy-9Qt" secondAttribute="centerX" id="QVu-m1-aNQ"/>
                             <constraint firstItem="0jd-qs-Seh" firstAttribute="top" secondItem="Cyz-bP-mxB" secondAttribute="bottom" constant="100" id="X0f-yg-UmB"/>
-                            <constraint firstItem="Cyz-bP-mxB" firstAttribute="top" secondItem="lpf-sL-YKl" secondAttribute="top" constant="40" id="eBq-6N-6is"/>
+                            <constraint firstItem="Cyz-bP-mxB" firstAttribute="top" secondItem="lpf-sL-YKl" secondAttribute="top" constant="30" id="eBq-6N-6is"/>
                             <constraint firstItem="Cyz-bP-mxB" firstAttribute="centerX" secondItem="8jh-cy-9Qt" secondAttribute="centerX" id="jPr-g7-Bn9"/>
                             <constraint firstItem="lpf-sL-YKl" firstAttribute="bottom" secondItem="4bZ-Wr-SmP" secondAttribute="bottom" constant="20" id="jwu-Nl-RaT"/>
                         </constraints>
@@ -542,7 +542,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="OVj-Vt-eNz">
-                                <rect key="frame" x="50" y="179" width="293" height="164"/>
+                                <rect key="frame" x="50" y="242.66666666666663" width="293" height="164"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-lv-GQD">
                                         <rect key="frame" x="0.0" y="0.0" width="293" height="40"/>
@@ -553,7 +553,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bn7-hI-Ufb">
-                                        <rect key="frame" x="0.0" y="62" width="293" height="40"/>
+                                        <rect key="frame" x="0.0" y="62.000000000000028" width="293" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="soo-xP-2mD"/>
                                         </constraints>
@@ -561,7 +561,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poc-SL-ye7">
-                                        <rect key="frame" x="0.0" y="124" width="293" height="40"/>
+                                        <rect key="frame" x="0.0" y="124.00000000000003" width="293" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BeZ-c2-jjM"/>
                                         </constraints>
@@ -570,12 +570,20 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Préférences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEy-Sx-9dl">
+                                <rect key="frame" x="113.66666666666669" y="89" width="166" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iCO-LG-0vf"/>
                         <color key="backgroundColor" red="0.90561868686868685" green="0.89982605709574537" blue="0.60510381818959602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OVj-Vt-eNz" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="120" id="4e7-xa-4RR"/>
+                            <constraint firstItem="OVj-Vt-eNz" firstAttribute="top" secondItem="CEy-Sx-9dl" secondAttribute="bottom" constant="120" id="4e7-xa-4RR"/>
+                            <constraint firstItem="CEy-Sx-9dl" firstAttribute="top" secondItem="iCO-LG-0vf" secondAttribute="top" constant="30" id="59s-Ff-I69"/>
                             <constraint firstItem="iCO-LG-0vf" firstAttribute="trailing" secondItem="OVj-Vt-eNz" secondAttribute="trailing" constant="50" id="6Uw-32-Mwg"/>
+                            <constraint firstItem="CEy-Sx-9dl" firstAttribute="centerX" secondItem="Xu3-YZ-Wfy" secondAttribute="centerX" id="Gd0-c3-sUK"/>
                             <constraint firstItem="OVj-Vt-eNz" firstAttribute="leading" secondItem="iCO-LG-0vf" secondAttribute="leading" constant="50" id="aqv-ou-10f"/>
                         </constraints>
                     </view>
@@ -620,8 +628,8 @@
         <image name="scatteredClouds" width="120" height="120"/>
         <image name="tempV" width="36" height="88"/>
         <image name="wind" width="120" height="120"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,15 +9,43 @@
 import XCTest
 
 final class ExchangeServiceTestCase: XCTestCase {
-    func testGetExchangeShouldPostFailedCallbackIfError() {
+    func testGetExchangeShouldCurrenciesDeleted() {
         //Given
-        let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: nil, error: FakeExchangeResponseData.error))
+        UserDefaults.standard.removeObject(forKey: userKey02)
+        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseOk, error: nil))
+        
         //When
         let expectation = XCTestExpectation(description: "delay for queue change")
-        exchangeService.getExchange(1.0, callback: { success, result in
+        XCTAssertNil((UserDefaults.standard.object(forKey: userKey02) as? [Float]))
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then
-            XCTAssertTrue(success)
-            XCTAssertNotNil(result)
+            
+            XCTAssertTrue(refresh,"API call launched")
+            XCTAssertEqual(exchangeService.currenciesRates.count, 18, accuracy: 0, "Currencies downloaded")
+            XCTAssertTrue(success, "API response success")
+            XCTAssertNotNil(result, "Result correct answer")
+            expectation.fulfill()
+        })
+        
+        wait(for: [expectation], timeout: 0.01)
+        
+    }
+    
+    func testGetExchangeShouldGettFailedCallbackIfError() {
+        //Given
+        let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: nil, error: FakeExchangeResponseData.error))
+        
+        //When
+        let now = Date()
+        let timeStampFake = now.addingTimeInterval(-86401)
+        UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
+        let expectation = XCTestExpectation(description: "delay for queue change")
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
+            //Then
+            XCTAssertTrue(refresh)
+            XCTAssertEqual(exchangeService.currenciesRates.count, 18, accuracy: 0)
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
@@ -25,28 +53,46 @@ final class ExchangeServiceTestCase: XCTestCase {
     }
     
 
-    func testGetExchangeShouldPostFailedCallbackIfResponseKo() {
+    func testGetExchangeShouldGetFailedCallbackIfResponseKo() {
         //Given
         let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: FakeExchangeResponseData.responseKo, error: nil))
         //When
         let expectation = XCTestExpectation(description: "delay for queue change")
-        exchangeService.getExchange(1.0, callback: { success, result in
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then
-            XCTAssertTrue(success)
-            XCTAssertNotNil(result)
+            XCTAssertTrue(refresh)
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
         
     }
     
-    func testGetExchangeShouldPostFailedCallbackIfDataIncorrect() {
+    func testGetExchangeShouldGetFailedCallbackIfDataIncorrect() {
         //Given
         let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.incorrectData, response: nil, error: nil))
         //When
         let expectation = XCTestExpectation(description: "delay for queue change")
-        exchangeService.getExchange(1.0, callback: { success, result in
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then
+            XCTAssertTrue(refresh)
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 0.01)
+        
+    }
+    
+    func testGetExchangeShouldGetSucceed() {
+        //Given
+        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseOk, error: nil))
+        //When
+        let expectation = XCTestExpectation(description: "delay for queue change")
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
+            //Then
+            XCTAssertTrue(refresh)
             XCTAssertTrue(success)
             XCTAssertNotNil(result)
             expectation.fulfill()
@@ -55,27 +101,31 @@ final class ExchangeServiceTestCase: XCTestCase {
         
     }
     
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testGetExchangeShouldUnderLimitTime() {
+        //Given
+        print("Start test")
+        let now = Date()
+        UserDefaults.standard.removeObject(forKey: userKey03)
+        UserDefaults.standard.set(now.timeIntervalSince1970, forKey: userKey03)
+        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseOk, error: nil))
+        
+        //When
+        print("UserDefaulte1 : \(UserDefaults.standard.double(forKey: userKey03))")
+        let expectation = XCTestExpectation(description: "delay for queue change")
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
+            //Then
+            XCTAssertFalse(refresh)
+            XCTAssertEqual(exchangeService.currenciesRates.count, 18, accuracy: 0)
+            XCTAssertTrue(success)
+            XCTAssertNotNil(result)
+            expectation.fulfill()
+        })
+        
+        wait(for: [expectation], timeout: 0.01)
+        
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
+    
+   
 
 }

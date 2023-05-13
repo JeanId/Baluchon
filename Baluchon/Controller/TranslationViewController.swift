@@ -24,18 +24,13 @@ class TranslateViewController: UIViewController {
         textToTranslate.resignFirstResponder()
     }
     
-    @IBAction func tapTranslate() {
-        textToTranslate.isEnabled.toggle()
-       // translate()
-    }
-    
     
     private func translate(_ stringToTranslate: String) {
         showActicityIndicator(hidden: false)
         TranslateService.shared.getTranslate(stringToTranslate, callback: { success, translationText in
             DispatchQueue.main.async {
                 guard let translationText = translationText, success == true else {
-                    // message erreur
+                    self.alertAPIError()
                     return
                 }
                 self.translatedText.text = translationText
@@ -49,18 +44,34 @@ class TranslateViewController: UIViewController {
         activityIndicator.isHidden = hidden
     }
     
+    private func alertAPIError() {
+        let alertC = UIAlertController(title: "Pas de réponse", message: "Défaut serveur API de traduction de texte", preferredStyle: .alert)
+        alertC.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertC, animated: true, completion: nil)
+    }
+    
 }
 
 extension TranslateViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let input = textToTranslate.text else {
-            // defaut string
+            self.alertTextFieldError(message: "défaut chaine de caractère incorrecte")
             return false
         }
-        translate(input)
-        textToTranslate.resignFirstResponder()
-        return true
+        if input.count < 40 {
+            translate(input)
+            textToTranslate.resignFirstResponder()
+            return true
+        } else {
+            self.alertTextFieldError(message: "message à traduire trop long ! > à 40 caractères")
+            return false
+        }
     }
     
+    private func alertTextFieldError(message: String) {
+        let alertC = UIAlertController(title: "Entrée incorrecte", message: message, preferredStyle: .alert)
+        alertC.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertC, animated: true, completion: nil)
+    }
 }

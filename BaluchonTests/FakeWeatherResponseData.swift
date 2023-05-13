@@ -1,13 +1,13 @@
 //
-//  FakeExchangeResponseData.swift
+//  FakeWeatherResponseData.swift
 //  BaluchonTests
 //
-//  Created by Jean Barottin on 09/05/2023.
+//  Created by Jean Barottin on 11/05/2023.
 //
 
 import Foundation
 
-class FakeExchangeResponseData {
+class FakeWeatherResponseData {
     static let responseOk = HTTPURLResponse(url: URL(string: "https://api.apilayer.com/fixer/latest" )!,
                                             statusCode: 200, httpVersion: nil, headerFields: nil)
     
@@ -18,11 +18,11 @@ class FakeExchangeResponseData {
     static let error = ExchangeError()
     
     static var correctData: Data {
-        let bundle = Bundle(for: FakeExchangeResponseData.self)
-        let url = bundle.url(forResource: "Exchange", withExtension: "json")
+        let bundle = Bundle(for: FakeWeatherResponseData.self)
+        let url = bundle.url(forResource: "Weather", withExtension: "json")
         let data = try! Data(contentsOf: url!)
         return data
     }
     
-    static let incorrectData = "LeChemin".data(using: .utf8)!
+    static let incorrectData = "EtLaVie".data(using: .utf8)!
 }

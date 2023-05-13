@@ -45,10 +45,9 @@ class WeatherViewController: UIViewController {
 
     @IBAction func getMeteo() {
         getForecasts()
-        
     }
     
-  
+    // MARK: - get and display forecast Methods
     private func getForecasts() {
         let city1 = SettingService.shared.getCity1Row()
         let city2 = SettingService.shared.getCity2Row()
@@ -58,7 +57,7 @@ class WeatherViewController: UIViewController {
         WeatherService.shared.getCityWeather(cityAt: city1) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
-                    print("défaut")
+                    self.alertAPIError()
                     return
                 }
                 self.city1Label.text = forecastdata.name
@@ -87,7 +86,7 @@ class WeatherViewController: UIViewController {
         WeatherService.shared.getCityWeather(cityAt: city2) { success, forecastdata in
             DispatchQueue.main.async {
                 guard let forecastdata = forecastdata, success == true else {
-                    print("défaut")
+                    self.alertAPIError()
                     return
                 }
                 self.city2Label.text = forecastdata.name
@@ -116,12 +115,13 @@ class WeatherViewController: UIViewController {
         showActicityIndicator(hidden: true)
     }
     
-    
+    // MARK: - hid/show activityIndicator Methods
     private func showActicityIndicator(hidden: Bool) {
-        tapButton.isHidden = !hidden
+        tapButton.isHidden = hidden
         activityIndicator.isHidden = hidden
     }
     
+    // MARK: - text wind direction decoder Methods
     private func windDirection(for deg: Float) -> String {
         if deg >= 348.75 {
             return "Nord" }
@@ -160,6 +160,7 @@ class WeatherViewController: UIViewController {
         return "Error"
     }
     
+    // MARK: - looking for row number for id weather Methods
     private func getForecastRow(for id: Int16) -> Int? {
         for (i, forecast) in forecastsList.enumerated() {
             if forecast.id == id {
@@ -167,6 +168,13 @@ class WeatherViewController: UIViewController {
             }
         }
         return nil
+    }
+    
+    // MARK: - alert message Methods
+    private func alertAPIError() {
+        let alertC = UIAlertController(title: "Pas de réponse", message: "Défaut serveur API de météo", preferredStyle: .alert)
+        alertC.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertC, animated: true, completion: nil)
     }
 }
 

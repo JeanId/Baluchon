@@ -9,5 +9,12 @@ import Foundation
 
 struct TranslateData: Codable {
     let data: Translations
-    
+}
+
+struct Translations: Codable {
+    let translations: [TranslatedText]
+}
+
+struct TranslatedText: Codable {
+    let translatedText: String
 }

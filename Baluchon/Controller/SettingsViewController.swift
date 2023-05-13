@@ -75,12 +75,7 @@ class SettingsViewController: UIViewController  {
         super.viewDidDisappear(animated)
         
     }
-    
-      
-    
-   
 
-    
     
 }
 

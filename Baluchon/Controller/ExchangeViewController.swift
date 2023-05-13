@@ -45,20 +45,27 @@ class ExchangeViewController: UIViewController {
     
     
     @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
-           amountTextField.resignFirstResponder()
+            guard let input = Float((amountTextField.text!)) else {
+                return
+            }
+            processExchange(for: input)
+            amountTextField.resignFirstResponder()
        }
     
     
     private func processExchange(for amount: Float) {
         amountTextField.isEnabled = false
         activityIndicator.isHidden = false
-        ExchangeService.shared.getExchange(amount, callback: {success, result in
+        ExchangeService.shared.getExchange(amount, callback: {refresh, success, result in
             guard let result = result, success == true  else {
-                // message erreur
+                self.alertAPIError()
                 return
             }
             let formattedResult = String(format: "%.2F", result)
             self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.getCurrencyRow()].currencyCode)"
+            if refresh {
+                self.resultLabel.text = self.resultLabel.text! + " 📈"
+            }
         })
         amountTextField.isEnabled = true
         activityIndicator.isHidden = true
@@ -75,5 +82,11 @@ extension ExchangeViewController: UITextFieldDelegate {
         processExchange(for: input)
         amountTextField.resignFirstResponder()
         return true
+    }
+    
+    private func alertAPIError() {
+        let alertC = UIAlertController(title: "Pas de réponse", message: "Défaut serveur API du cour des devises", preferredStyle: .alert)
+        alertC.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertC, animated: true, completion: nil)
     }
 }

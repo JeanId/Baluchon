@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": 5.4125,
+        "lat": 47.0439
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 285.77,
+        "feels_like": 285.2,
+        "temp_min": 285.08,
+        "temp_max": 285.99,
+        "pressure": 1014,
+        "humidity": 81,
+        "sea_level": 1014,
+        "grnd_level": 991
+    },
+    "visibility": 9568,
+    "wind": {
+        "speed": 2.96,
+        "deg": 337,
+        "gust": 3.69
+    },
+    "clouds": {
+        "all": 96
+    },
+    "dt": 1683816054,
+    "sys": {
+        "type": 2,
+        "id": 2017913,
+        "country": "FR",
+        "sunrise": 1683778117,
+        "sunset": 1683831655
+    },
+    "timezone": 7200,
+    "id": 2973267,
+    "name": "Tavaux",
+    "cod": 200
+}

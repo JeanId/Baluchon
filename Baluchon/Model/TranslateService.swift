@@ -12,23 +12,25 @@ class TranslateService {
     private init() {}
     
     private let translateUrl = URL(string: translateUrlString)!
+    private var session = URLSession(configuration: .default)
     
+    init(session: URLSession) {
+        self.session = session
+    }
     
     func getTranslate(_ stringToTranslate: String, callback: @escaping (Bool, String?) ->Void) {
+        // API call preparation
         var request = URLRequest(url: translateUrl)
         request.httpMethod = "POST"
         let body = "q=" + stringToTranslate + "&target=fr&format=text&source=en&key=" + translateToken
         request.httpBody = body.data(using: .utf8)
-        let session = URLSession(configuration: .default)
-        //task?.cancel()
+        
         let task = session.dataTask(with: request) { data, response, error in
-           // DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("erreur response")
                     callback(false, nil)
                     return
                 }
@@ -40,9 +42,8 @@ class TranslateService {
                 } catch let error {
                     callback(false, nil)
                     print(error)
-                    
                 }
-            //}
+          
             
             
         }
