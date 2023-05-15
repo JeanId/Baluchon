@@ -33,6 +33,18 @@ final class TranslateServiceTestCase: XCTestCase {
         })
     }
     
+    func testGetTranslateeShouldPostFailedCallbackIfNoData() {
+        //Given
+        let translateService = TranslateService(session: URLSessionFake(data: nil, response: FakeTranslateResponseData.responseOk, error: nil))
+        
+        //When
+        translateService.getTranslate("Hello guys !", callback: {success, result in
+            //Then
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
+        })
+    }
+    
     func testGetTranslateeShouldPostFailedCallbackIfIncorrectData() {
         //Given
         let translateService = TranslateService(session: URLSessionFake(data: FakeTranslateResponseData.incorrectData, response: nil, error: nil))

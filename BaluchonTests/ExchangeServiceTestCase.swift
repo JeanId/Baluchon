@@ -9,7 +9,7 @@
 import XCTest
 
 final class ExchangeServiceTestCase: XCTestCase {
-    func testGetExchangeShouldCurrenciesDeleted() {
+    func testGetExchangeShouldGetSucceedCurrenciesDeleted() {
         //Given
         UserDefaults.standard.removeObject(forKey: userKey02)
         let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseOk, error: nil))
@@ -37,7 +37,7 @@ final class ExchangeServiceTestCase: XCTestCase {
         
         //When
         let now = Date()
-        let timeStampFake = now.addingTimeInterval(-86401)
+        let timeStampFake = now.addingTimeInterval(-86410)
         UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
         let expectation = XCTestExpectation(description: "delay for queue change")
         exchangeService.getExchange(1.0, callback: {refresh, success, result in
@@ -57,6 +57,28 @@ final class ExchangeServiceTestCase: XCTestCase {
         //Given
         let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: FakeExchangeResponseData.responseKo, error: nil))
         //When
+        let now = Date()
+        let timeStampFake = now.addingTimeInterval(-86410)
+        UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
+        let expectation = XCTestExpectation(description: "delay for queue change")
+        exchangeService.getExchange(1.0, callback: {refresh, success, result in
+            //Then
+            XCTAssertTrue(refresh)
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 0.01)
+        
+    }
+    
+    func testGetExchangeShouldGetFailedCallbackIfNoData() {
+        //Given
+        let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: FakeExchangeResponseData.responseOk, error: nil))
+        //When
+        let now = Date()
+        let timeStampFake = now.addingTimeInterval(-86410)
+        UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
         let expectation = XCTestExpectation(description: "delay for queue change")
         exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then
@@ -73,6 +95,9 @@ final class ExchangeServiceTestCase: XCTestCase {
         //Given
         let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.incorrectData, response: nil, error: nil))
         //When
+        let now = Date()
+        let timeStampFake = now.addingTimeInterval(-86410)
+        UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
         let expectation = XCTestExpectation(description: "delay for queue change")
         exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then
@@ -89,6 +114,9 @@ final class ExchangeServiceTestCase: XCTestCase {
         //Given
         let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseOk, error: nil))
         //When
+        let now = Date()
+        let timeStampFake = now.addingTimeInterval(-86410)
+        UserDefaults.standard.set(timeStampFake.timeIntervalSince1970, forKey: userKey03)
         let expectation = XCTestExpectation(description: "delay for queue change")
         exchangeService.getExchange(1.0, callback: {refresh, success, result in
             //Then

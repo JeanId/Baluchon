@@ -64,7 +64,7 @@ class ExchangeViewController: UIViewController {
             let formattedResult = String(format: "%.2F", result)
             self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.getCurrencyRow()].currencyCode)"
             if refresh {
-                self.resultLabel.text = self.resultLabel.text! + " 📈"
+                self.resultLabel.text = self.resultLabel.text! + "  💭"
             }
         })
         amountTextField.isEnabled = true

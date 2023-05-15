@@ -30,7 +30,7 @@ class ExchangeService  {
             
             let timestamp = UserDefaults.standard.double(forKey: userKey03)
                 if isToUpdate(since: timestamp) {
-                    // currencies must be updated
+                    // currencies rates must be updated
                 } else {
                     // recorded currencies rates using
                     let result = amount * currenciesRates[SettingService.shared.getCurrencyRow()]

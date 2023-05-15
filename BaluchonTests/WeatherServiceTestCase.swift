@@ -33,6 +33,18 @@ final class WeatherServiceTestCase: XCTestCase {
         })
     }
     
+    func testGetCityWeatherShouldPostFailedCallbackIfNoData() {
+        //Given
+        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: FakeWeatherResponseData.responseOk, error: nil))
+        
+        //When
+        weatherService.getCityWeather(cityAt: 1, callback: {success, result in
+            //Then
+            XCTAssertFalse(success)
+            XCTAssertNil(result)
+        })
+    }
+    
     func testGetCityWeatherShouldPostFailedCallbackIfIncorrectData() {
         //Given
         let weatherService = WeatherService(session: URLSessionFake(data: FakeWeatherResponseData.incorrectData, response: nil, error: nil))
