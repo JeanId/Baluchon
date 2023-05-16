@@ -273,8 +273,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-qs-Seh">
                                 <rect key="frame" x="40" y="205" width="313" height="161.66666666666663"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="112" translatesAutoresizingMaskIntoConstraints="NO" id="mdF-qd-HXd">
-                                        <rect key="frame" x="16" y="0.0" width="281" height="28.666666666666668"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mdF-qd-HXd">
+                                        <rect key="frame" x="8" y="0.0" width="297" height="28.666666666666668"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYO-eq-5SJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="28.666666666666668"/>
@@ -283,7 +283,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-H6-WEA">
-                                                <rect key="frame" x="221.66666666666669" y="0.0" width="59.333333333333314" height="28.666666666666668"/>
+                                                <rect key="frame" x="237.66666666666671" y="0.0" width="59.333333333333343" height="28.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -291,7 +291,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2aj-2l-p30">
-                                        <rect key="frame" x="9" y="36.666666666666657" width="295.33333333333337" height="125"/>
+                                        <rect key="frame" x="9" y="36.666666666666657" width="295.33333333333331" height="125"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Wu-EL-mwl">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="125"/>
@@ -379,12 +379,16 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.68707060809999998" green="0.84643584490000001" blue="0.90392458440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mdF-qd-HXd" secondAttribute="trailing" constant="8" id="Z3p-0c-dzY"/>
+                                    <constraint firstItem="mdF-qd-HXd" firstAttribute="leading" secondItem="0jd-qs-Seh" secondAttribute="leading" constant="8" id="j8E-Bx-qkA"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-3r-Ym9">
                                 <rect key="frame" x="40" y="426.66666666666669" width="313" height="161.66666666666669"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="112" translatesAutoresizingMaskIntoConstraints="NO" id="gsh-5F-PtL">
-                                        <rect key="frame" x="16" y="0.0" width="281" height="28.666666666666668"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gsh-5F-PtL">
+                                        <rect key="frame" x="8" y="0.0" width="297" height="28.666666666666668"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-uX-xKb">
                                                 <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="28.666666666666668"/>
@@ -393,7 +397,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2c-Wb-gM3">
-                                                <rect key="frame" x="221.66666666666669" y="6" width="59.333333333333314" height="17"/>
+                                                <rect key="frame" x="237.66666666666671" y="0.0" width="59.333333333333343" height="28.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -489,6 +493,10 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.68707060809999998" green="0.84643584490000001" blue="0.90392458440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gsh-5F-PtL" secondAttribute="trailing" constant="8" id="7Qb-un-Utw"/>
+                                    <constraint firstItem="gsh-5F-PtL" firstAttribute="leading" secondItem="HxO-3r-Ym9" secondAttribute="leading" constant="8" id="NWU-tz-J6U"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lpf-sL-YKl"/>
