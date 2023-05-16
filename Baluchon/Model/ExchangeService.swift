@@ -44,7 +44,6 @@ class ExchangeService  {
         request.allHTTPHeaderFields = ["apikey":exchangeToken]
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(true, false, nil)
                     return
@@ -64,8 +63,6 @@ class ExchangeService  {
                         print(error)
                         callback(true, false, nil)
                 }
-            }
-            
         }
         
         task.resume()

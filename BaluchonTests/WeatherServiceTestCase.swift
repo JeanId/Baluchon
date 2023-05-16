@@ -66,6 +66,8 @@ final class WeatherServiceTestCase: XCTestCase {
             //Then
             XCTAssertTrue(success)
             XCTAssertNotNil(result)
+            XCTAssertEqual(result?.name, "Tavaux")
+            XCTAssertEqual(result?.wind.deg, 337)
         })
     }
 }

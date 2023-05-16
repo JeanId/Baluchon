@@ -66,6 +66,7 @@ final class TranslateServiceTestCase: XCTestCase {
             //Then
             XCTAssertTrue(success)
             XCTAssertNotNil(result)
+            XCTAssertEqual(result, "Je ne suis pas encore prêt à passer des appels réseau.")
         })
     }
 

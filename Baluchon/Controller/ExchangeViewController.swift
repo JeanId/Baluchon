@@ -57,14 +57,16 @@ class ExchangeViewController: UIViewController {
         amountTextField.isEnabled = false
         activityIndicator.isHidden = false
         ExchangeService.shared.getExchange(amount, callback: {refresh, success, result in
-            guard let result = result, success == true  else {
-                self.alertAPIError()
-                return
-            }
-            let formattedResult = String(format: "%.2F", result)
-            self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.getCurrencyRow()].currencyCode)"
-            if refresh {
-                self.resultLabel.text = self.resultLabel.text! + "  💭"
+            DispatchQueue.main.async {
+                guard let result = result, success == true  else {
+                    self.alertAPIError()
+                    return
+                }
+                let formattedResult = String(format: "%.2F", result)
+                self.resultLabel.text = "\(formattedResult) \(currenciesList[SettingService.shared.getCurrencyRow()].currencyCode)"
+                if refresh {
+                    self.resultLabel.text = self.resultLabel.text! + "  💭"
+                }
             }
         })
         amountTextField.isEnabled = true
