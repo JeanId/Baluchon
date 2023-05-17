@@ -20,7 +20,7 @@ class TranslateViewController: UIViewController {
 
     }
     
-
+    // MARK: - tap on screen to return Method
     @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
         if textToTranslate.text == "" {
             translatedText.text = "  ......."
@@ -36,7 +36,7 @@ class TranslateViewController: UIViewController {
         textToTranslate.resignFirstResponder()
     }
     
-    
+    // MARK: - get and display the translate Method
     private func translate(_ stringToTranslate: String) {
         showActicityIndicator(hidden: false)
         TranslateService.shared.getTranslate(stringToTranslate, callback: { success, translationText in
@@ -51,11 +51,13 @@ class TranslateViewController: UIViewController {
         showActicityIndicator(hidden: true)
     }
     
+    // MARK: - hid/show activityIndicator Method
     private func showActicityIndicator(hidden: Bool) {
         textToTranslate.isEnabled = hidden
         activityIndicator.isHidden = hidden
     }
     
+    // MARK: - alert API message Method
     private func alertAPIError() {
         let alertC = UIAlertController(title: "Pas de réponse", message: "Défaut serveur API de traduction de texte", preferredStyle: .alert)
         alertC.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -64,6 +66,8 @@ class TranslateViewController: UIViewController {
     
 }
 
+
+// MARK: - TextField editing Management and Alert Methods
 extension TranslateViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -81,7 +85,6 @@ extension TranslateViewController: UITextFieldDelegate {
         }
     }
     
-   
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let input = textField.text else {
@@ -125,6 +128,7 @@ extension TranslateViewController: UITextFieldDelegate {
         return true
     }
     
+    // MARK: - alert TextField message Method
     private func alertTextFieldError(message: String) {
         let alertC = UIAlertController(title: "Entrée incorrecte", message: message, preferredStyle: .alert)
         alertC.addAction(UIAlertAction(title: "Ok", style: .default))

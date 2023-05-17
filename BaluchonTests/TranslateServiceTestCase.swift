@@ -23,7 +23,7 @@ final class TranslateServiceTestCase: XCTestCase {
     
     func testGetTranslateeShouldPostFailedCallbackIfResponseKo() {
         //Given
-        let translateService = TranslateService(session: URLSessionFake(data: nil, response: FakeTranslateResponseData.responseKo, error: nil))
+        let translateService = TranslateService(session: URLSessionFake(data: FakeTranslateResponseData.correctData, response: FakeTranslateResponseData.responseKo, error: nil))
         
         //When
         translateService.getTranslate("Hello guys !", callback: {success, result in
@@ -47,7 +47,7 @@ final class TranslateServiceTestCase: XCTestCase {
     
     func testGetTranslateeShouldPostFailedCallbackIfIncorrectData() {
         //Given
-        let translateService = TranslateService(session: URLSessionFake(data: FakeTranslateResponseData.incorrectData, response: nil, error: nil))
+        let translateService = TranslateService(session: URLSessionFake(data: FakeTranslateResponseData.incorrectData, response: FakeTranslateResponseData.responseOk, error: nil))
         
         //When
         translateService.getTranslate("Hello guys !", callback: {success, result in

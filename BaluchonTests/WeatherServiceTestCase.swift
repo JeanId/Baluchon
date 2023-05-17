@@ -23,7 +23,7 @@ final class WeatherServiceTestCase: XCTestCase {
     
     func testGetCityWeatherShouldPostFailedCallbackIfResponseKo() {
         //Given
-        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: FakeWeatherResponseData.responseKo, error: nil))
+        let weatherService = WeatherService(session: URLSessionFake(data: FakeWeatherResponseData.correctData, response: FakeWeatherResponseData.responseKo, error: nil))
         
         //When
         weatherService.getCityWeather(cityAt: 1, callback: {success, result in
@@ -47,7 +47,7 @@ final class WeatherServiceTestCase: XCTestCase {
     
     func testGetCityWeatherShouldPostFailedCallbackIfIncorrectData() {
         //Given
-        let weatherService = WeatherService(session: URLSessionFake(data: FakeWeatherResponseData.incorrectData, response: nil, error: nil))
+        let weatherService = WeatherService(session: URLSessionFake(data: FakeWeatherResponseData.incorrectData, response: FakeWeatherResponseData.responseOk, error: nil))
         
         //When
         weatherService.getCityWeather(cityAt: 1, callback: {success, result in

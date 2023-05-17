@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "A0E89BB4-6321-4127-A79D-E7F920EBD69A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Baluchon.xcodeproj",
+      "identifier" : "E7B2AE2829E1C96400E0B57E",
+      "name" : "Baluchon"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Baluchon.xcodeproj",
+        "identifier" : "E7C74B1C2A0A3A1700D1FF80",
+        "name" : "BaluchonTests"
+      }
+    }
+  ],
+  "version" : 1
+}

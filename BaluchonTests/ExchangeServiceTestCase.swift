@@ -49,7 +49,7 @@ final class ExchangeServiceTestCase: XCTestCase {
 
     func testGetExchangeShouldGetFailedCallbackIfResponseKo() {
         //Given
-        let exchangeService = ExchangeService(session: URLSessionFake(data: nil, response: FakeExchangeResponseData.responseKo, error: nil))
+        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.correctData, response: FakeExchangeResponseData.responseKo, error: nil))
         //When
         let now = Date()
         let timeStampFake = now.addingTimeInterval(-86410)
@@ -79,7 +79,7 @@ final class ExchangeServiceTestCase: XCTestCase {
     
     func testGetExchangeShouldGetFailedCallbackIfDataIncorrect() {
         //Given
-        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.incorrectData, response: nil, error: nil))
+        let exchangeService = ExchangeService(session: URLSessionFake(data: FakeExchangeResponseData.incorrectData, response: FakeExchangeResponseData.responseOk, error: nil))
         //When
         let now = Date()
         let timeStampFake = now.addingTimeInterval(-86410)

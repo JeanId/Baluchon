@@ -38,12 +38,9 @@ class ExchangeViewController: UIViewController {
         processExchange(for: input)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
+   
     
-    
+    // MARK: - tap on screen to return Method
     @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
             guard let input = Float((amountTextField.text!)) else {
                 return
@@ -52,7 +49,7 @@ class ExchangeViewController: UIViewController {
             amountTextField.resignFirstResponder()
        }
     
-    
+    // MARK: - get and display the change Method
     private func processExchange(for amount: Float) {
         amountTextField.isEnabled = false
         activityIndicator.isHidden = false
@@ -76,6 +73,7 @@ class ExchangeViewController: UIViewController {
     
 }
 
+// MARK: - TextField Management and Alert Methods
 extension ExchangeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let input = Float((amountTextField.text!)) else {

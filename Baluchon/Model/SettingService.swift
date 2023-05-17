@@ -11,6 +11,7 @@ class SettingService {
     static var shared = SettingService()
     private init() { }
     
+    // MARK: - Currency Management Methods
     func saveCurrency(at row: Int) {
         UserDefaults.standard.set(row, forKey: userKey01)
     }
@@ -19,6 +20,8 @@ class SettingService {
         return UserDefaults.standard.integer(forKey: userKey01)
     }
     
+    
+    // MARK: - City1 Management Methods
     func saveCity1(at row: Int) {
         UserDefaults.standard.set(row, forKey: userKey04)
     }
@@ -27,6 +30,8 @@ class SettingService {
         return UserDefaults.standard.integer(forKey: userKey04)
     }
     
+    
+    // MARK: - City2 Management Methods
     func saveCity2(at row: Int) {
         UserDefaults.standard.set(row, forKey: userKey05)
     }

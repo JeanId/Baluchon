@@ -43,11 +43,11 @@ class WeatherViewController: UIViewController {
         getForecasts()
     }
 
-    @IBAction func getMeteo() {
+    @IBAction func refreshForecast() {
         getForecasts()
     }
     
-    // MARK: - get and display forecast Methods
+    // MARK: - get and display forecast Method
     private func getForecasts() {
         let city1 = SettingService.shared.getCity1Row()
         let city2 = SettingService.shared.getCity2Row()
@@ -115,13 +115,13 @@ class WeatherViewController: UIViewController {
         showActicityIndicator(hidden: true)
     }
     
-    // MARK: - hid/show activityIndicator Methods
+    // MARK: - hid/show activityIndicator Method
     private func showActicityIndicator(hidden: Bool) {
         tapButton.isHidden = hidden
         activityIndicator.isHidden = hidden
     }
     
-    // MARK: - text wind direction decoder Methods
+    // MARK: - text wind direction decoder Method
     private func windDirection(for deg: Float) -> String {
         if deg >= 348.75 {
             return "Nord" }
@@ -160,7 +160,7 @@ class WeatherViewController: UIViewController {
         return "Error"
     }
     
-    // MARK: - looking for row number for id weather Methods
+    // MARK: - looking for row number for id weather Method
     private func getForecastRow(for id: Int16) -> Int? {
         for (i, forecast) in forecastsList.enumerated() {
             if forecast.id == id {
@@ -170,7 +170,7 @@ class WeatherViewController: UIViewController {
         return nil
     }
     
-    // MARK: - alert message Methods
+    // MARK: - alert message Method
     private func alertAPIError() {
         let alertC = UIAlertController(title: "Pas de réponse", message: "Défaut serveur API de météo", preferredStyle: .alert)
         alertC.addAction(UIAlertAction(title: "Ok", style: .default))

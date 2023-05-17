@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController  {
     var city1Row = 0
     var city2Row = 1
     
-
+    // MARK: - pickerViews init Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyTextField.inputView = currencyPickerView
@@ -46,6 +46,7 @@ class SettingsViewController: UIViewController  {
         
     }
     
+    // MARK: - display TexFields Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currencyRow = SettingService.shared.getCurrencyRow()
@@ -59,11 +60,9 @@ class SettingsViewController: UIViewController  {
         city2PickerView.selectRow(city2Row, inComponent: 0, animated: true)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-
+   
+    
+    // MARK: - save PickerWiews Methods
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SettingService.shared.saveCurrency(at: currencyRow)
@@ -71,19 +70,15 @@ class SettingsViewController: UIViewController  {
         SettingService.shared.saveCity2(at: city2Row)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
 
     
 }
 
 
- 
+// MARK: - PickerViews Management  Methods
  extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
  
- 
+     
      func numberOfComponents(in pickerView: UIPickerView) -> Int {
          return 1
      }

@@ -9,14 +9,15 @@ import Foundation
 
 class WeatherService {
     static var shared = WeatherService()
-    private init() {}
+    private init() { }
     
+    // MARK: - dependency injection
     private var session = URLSession(configuration: .default)
     init(session: URLSession) {
         self.session = session
     }
     
-    
+    // MARK: - launch network call to get the weather forecast Method
     func getCityWeather(cityAt row: Int, callback: @escaping (Bool, ForecastData?) -> Void) {
         // API call preparation
         let lat = String(locationsList[row].lat)
@@ -25,8 +26,6 @@ class WeatherService {
         let weatherUrl = URL(string: weatherUrlString + params)!
         var request = URLRequest(url: weatherUrl)
         request.httpMethod = "POST"
-        
-        
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 callback(false, nil)

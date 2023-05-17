@@ -9,22 +9,23 @@ import Foundation
 
 class TranslateService {
     static var shared = TranslateService()
-    private init() {}
+    private init() { }
     
     private let translateUrl = URL(string: translateUrlString)!
-    private var session = URLSession(configuration: .default)
     
+    // MARK: - dependency injection
+    private var session = URLSession(configuration: .default)
     init(session: URLSession) {
         self.session = session
     }
     
+    // MARK: - launch network call to get the translate Method
     func getTranslate(_ stringToTranslate: String, callback: @escaping (Bool, String?) ->Void) {
-        // API call preparation
+        // MARK: - API call preparation
         var request = URLRequest(url: translateUrl)
         request.httpMethod = "POST"
         let body = "q=" + stringToTranslate + "&target=fr&format=text&source=en&key=" + translateToken
         request.httpBody = body.data(using: .utf8)
-        
         let task = session.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {
                     callback(false, nil)

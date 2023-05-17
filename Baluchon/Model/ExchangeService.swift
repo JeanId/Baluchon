@@ -11,20 +11,21 @@ import Foundation
 
 class ExchangeService  {
     static var shared = ExchangeService()
-    private init() {}
+    private init() { }
     
     private static let exchangeUrl = URL(string: exchangeUrlString)!
     
     var currenciesRates: [Float] = []
     
+    // MARK: - dependency injection
     private var session = URLSession(configuration: .default)
     init(session: URLSession) {
         self.session = session
     }
     
-    
+    // MARK: - launch network call to get the currencies rates Method
     func getExchange(_ amount: Float, callback: @escaping (Bool, Bool, Float?) -> Void) {
-        // recovery of recorded currencies rates
+        // MARK: - recovery of recorded currencies rates
         if let currencies = (UserDefaults.standard.object(forKey: userKey02) as? [Float]) {
             currenciesRates = currencies
             
@@ -38,11 +39,10 @@ class ExchangeService  {
                     return
                 }
         }
-        // API call preparation
+        // MARK: - API call preparation
         var request = URLRequest(url: ExchangeService.exchangeUrl)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = ["apikey":exchangeToken]
-        
         let task = session.dataTask(with: request) { (data, response, error) in
                 guard let data = data, error == nil else {
                     callback(true, false, nil)
@@ -68,7 +68,7 @@ class ExchangeService  {
         task.resume()
     }
     
-    
+    // MARK: - Save the daily currenties rates Method
     private func saveCurrenciesRates(for exchangeTable: ExchangeTable) {
         currenciesRates = []
         currenciesRates.append(exchangeTable.rates.ARS)
@@ -93,7 +93,7 @@ class ExchangeService  {
         UserDefaults.standard.set(exchangeTable.timestamp, forKey: userKey03)
     }
     
-    // test if currencies rates must be updated
+    // MARK: - test date if currencies rates must be updated Method
     private func isToUpdate(since timeStamp: Double) -> Bool {
         let lastUrlStamp = Date(timeIntervalSince1970: timeStamp)
         let urlStampLimit = lastUrlStamp.addingTimeInterval(86400)
